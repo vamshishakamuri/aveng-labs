@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Super Dog — a puppy that reminds you to drink water</title>
+  <meta name="description" content="Super Dog is a free desktop pet for Mac, Windows and Linux. A fluffy puppy follows your cursor and reminds you to sip water every 30 minutes.">
+  <link rel="icon" href="../img/superdog-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="../"><span class="brand-dot">A</span>Aveng Labs</a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pets">Pets</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-dark btn-sm" href="#download">Download free</a>
+    </div>
+  </div>
+</nav>
+
+<header class="p-hero">
+  <div class="wrap">
+    <div>
+      <div class="app-top">
+        <img class="app-icon" src="../img/superdog-icon.png" alt="">
+        <span class="eyebrow">Super Dog · Free</span>
+      </div>
+      <h1>A puppy that reminds you to drink water.</h1>
+      <p class="lead">Super Dog trots around your screen after your cursor, and every 30 minutes nudges you to take a sip. It lives in your menu bar and never gets in the way of a click.</p>
+      <div class="hero-ctas" style="justify-content:flex-start">
+        <a class="btn btn-dark" href="#download" id="hero-dl">Download for your computer ↓</a>
+        <a class="btn btn-ghost" href="#pets">Meet the pets</a>
+      </div>
+      <p class="small" style="margin-top:14px">Free on macOS, Windows and Linux. No account needed.</p>
+    </div>
+    <div class="art"><img src="../img/pets/superdog/front.png" alt="Super Dog, a fluffy white Maltese puppy"></div>
+  </div>
+</header>
+
+<section id="features" style="padding-top:40px">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">What it does</span>
+      <h2>A tiny friend for long days at the desk.</h2>
+    </div>
+
+    <div class="bento">
+      <div class="tile water span-4">
+        <h3>Follows you around</h3>
+        <p>Your puppy trails the cursor, keeps a polite distance, and gets happy when you hover. Try it — move your mouse in the box.</p>
+        <div class="cursor-demo" id="demo">
+          <img class="pet" id="demo-pet" src="../img/pets/superdog/sideRight.png" alt="">
+          <svg class="fake-cursor" id="demo-cursor" viewBox="0 0 16 22"><path d="M1 1v17l4.5-4 3 7 3-1.3-3-6.7H15z" fill="#1f1a14" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg>
+          <span class="hint">move your mouse here</span>
+        </div>
+      </div>
+
+      <div class="tile warm span-2">
+        <div class="big-num">30<span style="font-size:1.4rem"> min</span></div>
+        <h3>Gentle sip reminders</h3>
+        <p>A little card pops up when it's time to drink. Tap it and get back to work.</p>
+        <div class="reminder">
+          <img src="../img/pets/superdog/sit.png" alt="">
+          <div><b>Time for a sip! 💧</b><span>Tap when you've had some water</span></div>
+        </div>
+      </div>
+
+      <div class="tile mint span-2">
+        <h3>Water diary</h3>
+        <p>See how many cups you've had today, and watch the streak grow.</p>
+        <div class="cups" aria-label="5 of 8 cups">
+          <i class="cup full"></i><i class="cup full"></i><i class="cup full"></i><i class="cup full"></i><i class="cup full"></i><i class="cup"></i><i class="cup"></i><i class="cup"></i>
+        </div>
+      </div>
+
+      <div class="tile span-2">
+        <h3>Never blocks a click</h3>
+        <p>The pet is pure decoration. Every click passes straight through it to whatever's underneath — even if something goes wrong.</p>
+      </div>
+
+      <div class="tile rose span-2">
+        <h3>Lives in the tray</h3>
+        <p>No Dock or taskbar clutter. Settings, pets and the diary are one click away in the menu bar.</p>
+      </div>
+
+      <div class="tile span-3">
+        <h3>Follow, stay, nap or play</h3>
+        <p>Let your pet follow you, tie it up by its little house, send it to sleep, or toss it a ball — right from the tray.</p>
+        <img src="../img/pets/superdog/curl.png" alt="Super Dog curled up asleep" style="width:150px;margin-top:10px">
+      </div>
+
+      <div class="tile span-3">
+        <h3>Private by design</h3>
+        <p>No account, no internet needed, no tracking. Your cups and settings stay on your computer.</p>
+        <p class="big-num" style="margin-top:18px">0 <span style="font-size:1.2rem">data sent</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pets" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Pick your pet</span>
+      <h2>Five friends to choose from.</h2>
+      <p class="muted">Switch any time from the tray menu. Hover to see them sit.</p>
+    </div>
+    <div class="pets">
+      <div class="pet-card"><div class="pose"><img class="main" src="../img/pets/superdog/front.png" alt="Super Dog"><img class="alt" src="../img/pets/superdog/sit.png" alt=""></div><b>Super Dog</b><span>Maltese puppy</span></div>
+      <div class="pet-card"><div class="pose"><img class="main" src="../img/pets/shadow/front.png" alt="Shadow"><img class="alt" src="../img/pets/shadow/sit.png" alt=""></div><b>Shadow</b><span>Pomeranian puppy</span></div>
+      <div class="pet-card"><div class="pose"><img class="main" src="../img/pets/miso/front.png" alt="Miso"><img class="alt" src="../img/pets/miso/sit.png" alt=""></div><b>Miso</b><span>Calico kitten</span></div>
+      <div class="pet-card"><div class="pose"><img class="main" src="../img/pets/pip/front.png" alt="Pip"><img class="alt" src="../img/pets/pip/sit.png" alt=""></div><b>Pip</b><span>Bunny</span></div>
+      <div class="pet-card"><div class="pose"><img class="main" src="../img/pets/fox/front.png" alt="Rusty"><img class="alt" src="../img/pets/fox/sit.png" alt=""></div><b>Rusty</b><span>Fox</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="download">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Download</span>
+      <h2>Free. Takes a minute.</h2>
+      <p class="muted">Pick your computer below. Version 0.1.0.</p>
+    </div>
+    <div class="downloads">
+      <div class="dl" data-os="mac">
+        <div class="os">macOS <span class="you">Your computer</span></div>
+        <a class="file" href="https://github.com/Aveng3r80/super-dog/releases/latest">Apple Silicon (M1 and later) <span>.dmg ↓</span></a>
+        <a class="file" href="https://github.com/Aveng3r80/super-dog/releases/latest">Intel <span>.dmg ↓</span></a>
+        <p class="note">First launch: System Settings → Privacy &amp; Security → <b>Open Anyway</b>. Only once.</p>
+      </div>
+      <div class="dl" data-os="win">
+        <div class="os">Windows <span class="you">Your computer</span></div>
+        <a class="file" href="https://github.com/Aveng3r80/super-dog/releases/latest">Windows (x64) <span>.exe ↓</span></a>
+        <a class="file" href="https://github.com/Aveng3r80/super-dog/releases/latest">Windows on ARM <span>.exe ↓</span></a>
+        <p class="note">No admin needed. If SmartScreen appears, click <b>More info → Run anyway</b>.</p>
+      </div>
+      <div class="dl" data-os="linux">
+        <div class="os">Linux <span class="you">Your computer</span></div>
+        <a class="file" href="https://github.com/Aveng3r80/super-dog/releases/latest">AppImage <span>.AppImage ↓</span></a>
+        <a class="file" href="https://github.com/Aveng3r80/super-dog/releases/latest">Debian / Ubuntu <span>.deb ↓</span></a>
+        <p class="note">On GNOME the tray icon needs the AppIndicator extension.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:20px">
+  <div class="wrap">
+    <div class="section-head center"><h2>Questions</h2></div>
+    <div class="faq">
+      <details><summary>Is Super Dog really free?</summary><p>Yes. No account, no subscription, no ads.</p></details>
+      <details><summary>Why does my computer warn me when I open it?</summary><p>The app isn't code-signed yet, so macOS and Windows show a one-time warning. Follow the note under your download and you won't see it again.</p></details>
+      <details><summary>Will it get in the way while I work?</summary><p>Never. Every click goes straight through the pet, it never steals focus, and it keeps out from under your pointer.</p></details>
+      <details><summary>Can I change how often it reminds me?</summary><p>Yes — open the tray menu to change the reminder interval, switch pets, or pause reminders.</p></details>
+      <details><summary>Does it start when my computer starts?</summary><p>If you want. Turn on <b>Start at login</b> (macOS) or <b>Start with Windows</b> in the tray menu.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Aveng Labs</span>
+    <span><a href="../">All apps</a><a href="#download">Download</a><a href="https://github.com/Aveng3r80/super-dog">GitHub</a></span>
+  </div>
+</footer>
+
+<script>
+  const nav = document.querySelector('.nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), { passive: true });
+
+  // Highlight the visitor's OS in the download section
+  const ua = navigator.userAgent;
+  const os = /Mac/.test(ua) ? 'mac' : /Win/.test(ua) ? 'win' : /Linux|X11/.test(ua) && !/Android/.test(ua) ? 'linux' : null;
+  if (os) {
+    document.querySelector(`.dl[data-os="${os}"]`)?.classList.add('mine');
+    const label = { mac: 'macOS', win: 'Windows', linux: 'Linux' }[os];
+    document.getElementById('hero-dl').textContent = `Download for ${label} ↓`;
+  }
+
+  // Cursor demo: the pet trails the pointer at a polite distance
+  const demo = document.getElementById('demo'), pet = document.getElementById('demo-pet'), cur = document.getElementById('demo-cursor');
+  let tx = 200, ty = 60, px = 40, py = 40, facing = 1;
+  demo.addEventListener('pointermove', e => {
+    const r = demo.getBoundingClientRect();
+    tx = e.clientX - r.left; ty = e.clientY - r.top;
+    cur.style.left = tx + 'px'; cur.style.top = ty + 'px';
+    demo.querySelector('.hint').style.opacity = 0;
+  });
+  (function step() {
+    const w = pet.offsetWidth, h = pet.offsetHeight;
+    const cx = px + w / 2, cy = py + h / 2;
+    const dx = tx - cx, dy = ty - cy, d = Math.hypot(dx, dy);
+    const keep = 70;
+    if (d > keep + 4) { px += dx * 0.06 * (1 - keep / d); py += dy * 0.06 * (1 - keep / d); }
+    else if (d < keep - 10) { px -= dx * 0.08; py -= dy * 0.08; }
+    px = Math.max(0, Math.min(demo.clientWidth - w, px));
+    py = Math.max(0, Math.min(demo.clientHeight - h, py));
+    if (Math.abs(dx) > 6) facing = dx > 0 ? 1 : -1;
+    pet.style.transform = `translate(${px - 30}px, ${py - 40}px) scaleX(${facing})`;
+    requestAnimationFrame(step);
+  })();
+</script>
+</body>
+</html>

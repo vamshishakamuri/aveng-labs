@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aveng Labs — small apps that make your computer nicer</title>
+  <meta name="description" content="Aveng Labs builds small, delightful desktop apps for Mac, Windows and Linux. Meet Super Dog, the puppy that reminds you to drink water.">
+  <link rel="icon" href="img/superdog-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="./"><span class="brand-dot">A</span>Aveng Labs</a>
+    <div class="nav-links">
+      <a href="#apps">Apps</a>
+      <a href="#about">About</a>
+      <a href="#notify">Updates</a>
+      <a class="btn btn-dark btn-sm" href="apps/super-dog.html">Get Super Dog</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Independent app studio</span>
+    <h1 style="margin-top:16px">Small apps that make <br>your computer <em>nicer</em>.</h1>
+    <p class="lead">We build tiny, thoughtful desktop apps for Mac, Windows and Linux. No accounts, no clutter — just little things that make your day better.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-dark" href="#apps">See our apps ↓</a>
+      <a class="btn btn-ghost" href="apps/super-dog.html">Meet Super Dog</a>
+    </div>
+  </div>
+  <div class="parade" aria-hidden="true">
+    <div class="walker"><img src="img/pets/superdog/sideRight.png" alt=""></div>
+    <div class="walker"><img src="img/pets/shadow/sideRight.png" alt=""></div>
+    <div class="walker"><img src="img/pets/miso/sideRight.png" alt=""></div>
+    <div class="walker"><img src="img/pets/pip/sideRight.png" alt=""></div>
+    <div class="walker"><img src="img/pets/fox/sideRight.png" alt=""></div>
+  </div>
+</header>
+
+<section id="apps">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The apps</span>
+      <h2>Made with care, shipped for real.</h2>
+      <p class="muted">Every app here is something we use every day. Download, try it, keep it if you love it.</p>
+    </div>
+
+    <div class="apps">
+      <a class="app-card featured" href="apps/super-dog.html">
+        <div class="info">
+          <div class="app-top">
+            <img class="app-icon" src="img/superdog-icon.png" alt="">
+            <div>
+              <span class="eyebrow">Featured</span>
+              <h3 style="font-size:1.8rem">Super Dog</h3>
+            </div>
+          </div>
+          <p class="muted">A fluffy puppy that trots after your cursor and reminds you to sip water every 30 minutes. Five pets to choose from. Never blocks a single click.</p>
+          <div class="tags">
+            <span class="tag free">Free</span>
+            <span class="tag">macOS</span>
+            <span class="tag">Windows</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Wellness</span>
+          </div>
+          <div><span class="btn btn-dark" style="margin-top:6px">View app →</span></div>
+        </div>
+        <div class="art"><img src="img/pets/superdog/sit.png" alt="Super Dog, a white Maltese puppy, sitting"></div>
+      </a>
+
+      <div class="app-card soon">
+        <div class="app-top">
+          <div class="app-icon placeholder">✦</div>
+          <div><span class="eyebrow">Coming soon</span><h3>Next app</h3></div>
+        </div>
+        <p class="muted">Something new is on the workbench. Join the list below to hear first.</p>
+        <div class="tags"><span class="tag">In development</span></div>
+      </div>
+
+      <div class="app-card soon">
+        <div class="app-top">
+          <div class="app-icon placeholder">✦</div>
+          <div><span class="eyebrow">Coming soon</span><h3>Another one</h3></div>
+        </div>
+        <p class="muted">Got an idea for a small app you wish existed? Tell us — the best ones get built.</p>
+        <div class="tags"><span class="tag">Idea stage</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="background:var(--bg-2)">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">How we build</span>
+      <h2 style="margin:10px 0 16px">Little apps, big care.</h2>
+      <p class="muted">We're a small team that likes making software that feels friendly. Each app does one thing well, respects your computer, and is a little bit charming.</p>
+    </div>
+    <div class="principles">
+      <div class="principle"><span class="n">01</span><div><b>Never in your way</b><p class="small">Our apps stay quiet until they're useful — no pop-ups you didn't ask for.</p></div></div>
+      <div class="principle"><span class="n">02</span><div><b>Private by default</b><p class="small">No accounts, no tracking. Your data stays on your computer.</p></div></div>
+      <div class="principle"><span class="n">03</span><div><b>Every desktop</b><p class="small">Mac, Windows and Linux from day one.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="notify">
+  <div class="wrap">
+    <div class="notify">
+      <h2>Hear about the next app first.</h2>
+      <p>One short email when something new ships. That's it.</p>
+      <form onsubmit="event.preventDefault(); this.innerHTML='<p style=&quot;margin:0;color:var(--bg)&quot;>Thanks! You\'re on the list. 🐾</p>'">
+        <input type="email" required placeholder="you@example.com" aria-label="Email address">
+        <button class="btn" type="submit">Notify me</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Aveng Labs</span>
+    <span><a href="#apps">Apps</a><a href="apps/super-dog.html">Super Dog</a><a href="https://github.com/Aveng3r80">GitHub</a></span>
+  </div>
+</footer>
+
+<script>
+  const nav = document.querySelector('.nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), { passive: true });
+</script>
+</body>
+</html>
