@@ -174,6 +174,21 @@ a.app-card:hover { transform: translateY(-3px); }
 .dl a.file:hover { background: var(--bg-2); }
 .dl .note { font-size: .84rem; color: var(--ink-3); }
 
+/* buy */
+.buy-card { display: grid; grid-template-columns: 1fr 1.1fr; max-width: 860px; margin: 0 auto; background: var(--card); border: 1px solid var(--line); border-radius: 32px; overflow: hidden; box-shadow: var(--shadow); }
+.buy-left { background: linear-gradient(160deg, var(--water), #f4f9ff); display: grid; place-items: center; padding: 32px; }
+.buy-left img { width: 80%; max-width: 280px; filter: drop-shadow(0 18px 18px rgba(30, 60, 100, .14)); }
+.buy-right { padding: 40px; display: flex; flex-direction: column; gap: 18px; }
+.buy-price { font-family: "Fredoka", sans-serif; font-size: 3.2rem; font-weight: 600; line-height: 1; }
+.buy-price span { font-family: "Inter", sans-serif; font-size: 1rem; font-weight: 500; color: var(--ink-3); }
+.buy-list { list-style: none; padding: 0; display: grid; gap: 10px; }
+.buy-list li { padding-left: 30px; position: relative; color: var(--ink-2); }
+.buy-list li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--mint); color: #1e6b41; font-size: .75rem; font-weight: 700; display: grid; place-items: center; margin-top: 3px; }
+.setup { max-width: 1000px; margin: 64px auto 0; text-align: center; }
+.setup .dl { text-align: left; }
+@media (max-width: 760px) { .buy-card { grid-template-columns: 1fr; } .buy-left { padding: 24px; } .buy-left img { width: 46%; } .buy-right { padding: 28px 22px; } }
+.tag.price-tag { background: var(--ink); color: var(--bg); }
+
 /* faq */
 .faq { max-width: 760px; margin: 0 auto; }
 .faq details { border-bottom: 1px solid var(--line); padding: 20px 0; }
