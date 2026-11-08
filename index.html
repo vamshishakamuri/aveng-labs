@@ -3,9 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aveng Labs: small apps that make your computer nicer</title>
-  <meta name="description" content="Aveng Labs builds small, delightful software: desktop apps like Super Dog, Front Desk AI voice agents for local businesses, and the Mellow Meadow Baby shop, and the Now It's You animated YouTube show.">
-  <link rel="icon" href="img/superdog-icon.png">
+  <title>Aveng Labs: small, thoughtful things</title>
+  <meta name="description" content="Aveng Labs is a small studio in Pennsylvania making software, stories and a little shop: Super Dog, Front Desk, Mellow Meadow Baby and Now It's You.">
+  <meta property="og:title" content="Aveng Labs">
+  <meta property="og:description" content="Software, stories and a little shop, made with care.">
+  <meta property="og:image" content="https://vamshishakamuri.github.io/aveng-labs/img/brand/avatar-1024.png">
+  <link rel="icon" href="img/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="img/brand/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="img/brand/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,141 +20,95 @@
 
 <nav class="nav">
   <div class="wrap">
-    <a class="brand" href="./"><span class="brand-dot">A</span>Aveng Labs</a>
-    <div class="nav-links">
-      <a href="#apps">Apps</a>
-      <a href="#channels">Channels</a>
-      <a href="#about">About</a>
-      <a href="#notify">Updates</a>
-      <a class="btn btn-dark btn-sm" href="apps/super-dog.html">Get Super Dog</a>
+    <a class="brand" href="./"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M13.5 55 L32 14.5 L50.5 55" fill="none" stroke="#1f2a1d" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 41.5 H42" fill="none" stroke="#1f2a1d" stroke-width="7.5" stroke-linecap="round"/><path d="M32.5 13 C33 5 40.5 0.5 50 1.5 C49.5 10.5 42 15.5 32.5 13 Z" fill="#c8643b"/><path d="M34 12 C38 9 42 6.5 46 4.5" fill="none" stroke="#f4c2a8" stroke-width="1.4" stroke-linecap="round"/></svg>
+Aveng Labs</a>
+    <div class="nav-links" id="site-menu">
+      <a href="#shelf">Apps</a>
+      <a href="apps/front-desk.html">Voice</a>
+      <a href="https://mellowmeadowbaby.com" target="_blank" rel="noopener">Shop</a>
+      <a href="https://www.youtube.com/@NowItsYouShow" target="_blank" rel="noopener">Shows</a>
+      <a class="btn btn-dark btn-sm" href="apps/front-desk.html#book">Book a demo</a>
     </div>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="site-menu">☰</button>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow">Independent app studio</span>
-    <h1 style="margin-top:16px">Small apps that make <br>your computer <em>nicer</em>.</h1>
-    <p class="lead">We build tiny, thoughtful things: desktop apps for Mac, Windows and Linux, AI voice agents that answer the phone, and a cozy baby shop. No clutter. Just little things that make your day better.</p>
+    <span class="eyebrow">Independent studio · Pennsylvania</span>
+    <h1>Small, <em>thoughtful</em> things.</h1>
+    <p class="lead">Software, stories and a little shop, made with care. A puppy on your desktop, a front desk that answers the phone, soft things for babies, and stories that ask what you would do.</p>
     <div class="hero-ctas">
-      <a class="btn btn-dark" href="#apps">See our apps ↓</a>
-      <a class="btn btn-ghost" href="apps/super-dog.html">Meet Super Dog</a>
+      <a class="btn btn-dark" href="#shelf">See what we make ↓</a>
+      <a class="btn btn-ghost" href="apps/front-desk.html#book">Book a demo</a>
     </div>
   </div>
   <div class="parade" aria-hidden="true">
-    <div class="walker"><img src="img/pets/superdog/sideRight.png" alt=""></div>
     <div class="walker"><img src="img/pets/shadow/sideRight.png" alt=""></div>
+    <div class="walker"><img src="img/pets/superdog/sideRight.png" alt=""></div>
     <div class="walker"><img src="img/pets/miso/sideRight.png" alt=""></div>
     <div class="walker"><img src="img/pets/pip/sideRight.png" alt=""></div>
     <div class="walker"><img src="img/pets/fox/sideRight.png" alt=""></div>
   </div>
 </header>
 
-<section id="apps">
+<section id="shelf">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">The apps</span>
-      <h2>Made with care, shipped for real.</h2>
-      <p class="muted">Desktop apps, voice agents and a shop. Each one is small, useful and made with care.</p>
+      <span class="eyebrow">What we make</span>
+      <h2>Four little things, made for real.</h2>
     </div>
-
-    <div class="apps">
-      <a class="app-card featured" href="apps/super-dog.html">
-        <div class="info">
-          <div class="app-top">
-            <img class="app-icon" src="img/superdog-icon.png" alt="">
-            <div>
-              <span class="eyebrow">Featured</span>
-              <h3 style="font-size:1.8rem">Super Dog</h3>
-            </div>
-          </div>
-          <p class="muted">A fluffy puppy that trots after your cursor and reminds you to sip water every 30 minutes. Five pets to choose from. Never blocks a single click.</p>
-          <div class="tags">
-            <span class="tag price-tag">$4.99</span>
-            <span class="tag">macOS</span>
-            <span class="tag">Windows</span>
-            <span class="tag">Linux</span>
-            <span class="tag">Wellness</span>
-          </div>
-          <div><span class="btn btn-dark" style="margin-top:6px">View app →</span></div>
+    <div class="shelf">
+      <a class="tile c-dog" href="apps/super-dog.html">
+        <div class="pic"><img class="pet" src="img/pets/shadow/sit.png" alt=""></div>
+        <div class="body">
+          <div class="top"><span class="eyebrow">Desktop app</span><span class="status">$4.99</span></div>
+          <h3>Super Dog</h3>
+          <p class="muted">A fluffy puppy that follows your cursor and reminds you to drink water. Five pets, Mac, Windows and Linux.</p>
+          <span class="go">Meet Super Dog →</span>
         </div>
-        <div class="art"><img src="img/pets/shadow/sit.png" alt="Shadow, a Pomeranian puppy and one of the five Super Dog pets, sitting"></div>
       </a>
-
-      <a class="app-card half" href="#notify">
-        <div class="app-top">
-          <div class="app-icon placeholder" aria-hidden="true">☎</div>
-          <div><span class="eyebrow">Voice agents · Now piloting</span><h3>Front Desk</h3></div>
+      <a class="tile c-desk" href="apps/front-desk.html">
+        <div class="pic" aria-hidden="true"><span class="phone">☎</span><div class="wave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+        <div class="body">
+          <div class="top"><span class="eyebrow">AI voice agent</span><span class="status">Piloting</span></div>
+          <h3>Front Desk</h3>
+          <p class="muted">Answers your business line when you're busy doing the work. Takes the job, reads it back, never over-promises.</p>
+          <span class="go">Hear a demo call →</span>
         </div>
-        <p class="muted">An AI phone front desk for small local businesses. It answers when you're busy doing the work, takes the job details, reads them back, and never promises anything you haven't agreed to.</p>
-        <div class="tags">
-          <span class="tag">AI voice agent</span>
-          <span class="tag">Phone calls</span>
-          <span class="tag">Local businesses</span>
-        </div>
-        <div><span class="btn btn-ghost" style="margin-top:6px">Get early access →</span></div>
       </a>
-
-      <a class="app-card half" href="https://mellowmeadowbaby.com" target="_blank" rel="noopener">
-        <div class="app-top">
-          <div class="app-icon placeholder" aria-hidden="true">🌼</div>
-          <div><span class="eyebrow">Shop · Live</span><h3>Mellow Meadow Baby</h3></div>
+      <a class="tile c-shop" href="https://mellowmeadowbaby.com" target="_blank" rel="noopener">
+        <div class="pic"><img class="photo" src="https://mellowmeadowbaby.com/cdn/shop/files/46c049457efc061ea681bb58e2e52331.jpg?width=1000" alt="Toddler in a rust-orange outfit from Mellow Meadow Baby" loading="lazy"></div>
+        <div class="body">
+          <div class="top"><span class="eyebrow">Online shop</span><span class="status">Shop</span></div>
+          <h3>Mellow Meadow Baby</h3>
+          <p class="muted">Soft, sweet things for little ones. Thoughtfully picked baby essentials, shipped across the US.</p>
+          <span class="go">Visit the shop ↗</span>
         </div>
-        <p class="muted">Our online shop for soft, sweet things for little ones. Thoughtfully picked baby essentials, shipped across the United States.</p>
-        <div class="tags">
-          <span class="tag">Online store</span>
-          <span class="tag">Baby</span>
-          <span class="tag">US shipping</span>
-        </div>
-        <div><span class="btn btn-ghost" style="margin-top:6px">Visit the shop ↗</span></div>
       </a>
-    </div>
-  </div>
-</section>
-
-<section id="channels">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">The channels</span>
-      <h2>Stories we make, too.</h2>
-      <p class="muted">Animated shows on YouTube, written and built in-house.</p>
-    </div>
-
-    <div class="channel-card">
-      <a class="channel-feature" href="https://www.youtube.com/watch?v=yMTwqxpVU5o" target="_blank" rel="noopener">
-        <img src="https://i.ytimg.com/vi/yMTwqxpVU5o/hqdefault.jpg" alt="Thumbnail for What IF You Celebrated Diwali on the Moon?" loading="lazy">
-        <span class="play" aria-hidden="true">▶</span>
-        <span class="feature-label">Latest · What IF You Celebrated Diwali on the Moon?</span>
-      </a>
-      <div class="channel-info">
-        <div class="app-top">
-          <div class="app-icon placeholder" aria-hidden="true">▶</div>
-          <div><span class="eyebrow">YouTube · @NowItsYouShow</span><h3>Now It's You</h3></div>
+      <a class="tile c-show" href="https://www.youtube.com/@NowItsYouShow" target="_blank" rel="noopener">
+        <div class="pic"><img class="thumb" src="https://i.ytimg.com/vi/yMTwqxpVU5o/hqdefault.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true">▶</span></div>
+        <div class="body">
+          <div class="top"><span class="eyebrow">YouTube show</span><span class="status">New episodes</span></div>
+          <h3>Now It's You</h3>
+          <p class="muted">Animated What IF stories told straight to you, ending on one question only you can answer.</p>
+          <span class="go">Watch on YouTube ↗</span>
         </div>
-        <p class="muted">What if it happened to you? Each episode is an animated What IF story told straight to you: you become President overnight, wake up in ancient Rome, or see everyone's death clock. It ends on one question only you can answer.</p>
-        <ul class="episodes">
-            <li><a href="https://www.youtube.com/watch?v=zckrfVEuEts" target="_blank" rel="noopener"><span class="ep-play" aria-hidden="true">▶</span><span class="ep-title">What IF You Woke Up in Ancient Rome?</span><span class="ep-len">4:07</span></a></li>
-            <li><a href="https://www.youtube.com/watch?v=mPGQuCIMlGc" target="_blank" rel="noopener"><span class="ep-play" aria-hidden="true">▶</span><span class="ep-title">What IF You Could See Everyone's Death Clock?</span><span class="ep-len">5:13</span></a></li>
-            <li><a href="https://www.youtube.com/watch?v=PGiLQ-H1ByA" target="_blank" rel="noopener"><span class="ep-play" aria-hidden="true">▶</span><span class="ep-title">What IF 8 Billion People Vanished in One Second?</span><span class="ep-len">5:36</span></a></li>
-            <li><a href="https://www.youtube.com/watch?v=rHMv_GY9JVI" target="_blank" rel="noopener"><span class="ep-play" aria-hidden="true">▶</span><span class="ep-title">What IF You Suddenly Became President of the USA?</span><span class="ep-len">4:55</span></a></li>
-        </ul>
-        <div><a class="btn btn-dark" href="https://www.youtube.com/@NowItsYouShow" target="_blank" rel="noopener">Watch on YouTube ↗</a></div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
 
 <section id="about" style="background:var(--bg-2)">
-  <div class="wrap split">
-    <div>
+  <div class="wrap">
+    <div class="section-head">
       <span class="eyebrow">How we build</span>
-      <h2 style="margin:10px 0 16px">Little apps, big care.</h2>
-      <p class="muted">We're a small team that likes making software that feels friendly. Each app does one thing well, respects your computer, and is a little bit charming.</p>
+      <h2>Little things, big care.</h2>
     </div>
-    <div class="principles">
-      <div class="principle"><span class="n">01</span><div><b>Never in your way</b><p class="small">Our apps stay quiet until they're useful. No pop-ups you didn't ask for.</p></div></div>
-      <div class="principle"><span class="n">02</span><div><b>Private by default</b><p class="small">No accounts, no tracking. Your data stays on your computer.</p></div></div>
-      <div class="principle"><span class="n">03</span><div><b>Every desktop</b><p class="small">Mac, Windows and Linux from day one.</p></div></div>
+    <div class="principles3">
+      <div class="pr"><span class="n">01</span><b>Useful before clever</b><p class="small muted">Everything we make does one job well, then gets out of the way.</p></div>
+      <div class="pr"><span class="n">02</span><b>Never in your way</b><p class="small muted">No pop-ups you didn't ask for, no clutter, no dark patterns.</p></div>
+      <div class="pr"><span class="n">03</span><b>Honest by design</b><p class="small muted">No fake urgency and no promises we can't keep. Even our voice agent follows that rule.</p></div>
     </div>
   </div>
 </section>
@@ -157,11 +116,12 @@
 <section id="notify">
   <div class="wrap">
     <div class="notify">
-      <h2>Hear about the next app first.</h2>
-      <p>One short email when something new ships. That's it.</p>
-      <form onsubmit="event.preventDefault(); this.innerHTML='<p style=&quot;margin:0;color:var(--bg)&quot;>Thanks! You\'re on the list. 🐾</p>'">
-        <input type="email" required placeholder="you@example.com" aria-label="Email address">
+      <h2>Hear when something new ships.</h2>
+      <p>One short email per launch. That's it.</p>
+      <form data-form="newsletter">
+        <input type="email" name="email" required placeholder="you@example.com" aria-label="Email address">
         <button class="btn" type="submit">Notify me</button>
+        <p class="form-msg" role="status"></p>
       </form>
     </div>
   </div>
@@ -170,13 +130,10 @@
 <footer>
   <div class="wrap">
     <span>© 2026 Aveng Labs</span>
-    <span><a href="#apps">Apps</a><a href="apps/super-dog.html">Super Dog</a><a href="https://mellowmeadowbaby.com" target="_blank" rel="noopener">Mellow Meadow Baby</a><a href="https://www.youtube.com/@NowItsYouShow" target="_blank" rel="noopener">YouTube</a><a href="https://github.com/Aveng3r80">GitHub</a></span>
+    <span><a href="apps/super-dog.html">Super Dog</a><a href="apps/front-desk.html">Front Desk</a><a href="https://mellowmeadowbaby.com" target="_blank" rel="noopener">Mellow Meadow Baby</a><a href="https://www.youtube.com/@NowItsYouShow" target="_blank" rel="noopener">Now It's You</a></span>
   </div>
 </footer>
 
-<script>
-  const nav = document.querySelector('.nav');
-  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), { passive: true });
-</script>
+<script type="module" src="js/site.js"></script>
 </body>
 </html>
