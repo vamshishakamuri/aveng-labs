@@ -127,7 +127,8 @@ test('styles.css: without JS, the phone header grows to fit the wrapped links', 
 test('apps/super-dog.html: describes license activation honestly', () => {
   const html = readPage('apps/super-dog.html');
   assert.doesNotMatch(html, /no internet needed/i);
-  assert.match(html, /License key for up to 3 computers/);
+  assert.match(html, /License key for one computer/);
+  assert.doesNotMatch(html, /3 computers/);
   assert.match(html, /<summary>How do I activate Super Dog\?<\/summary>/);
   assert.match(html, /once to activate/);
 });
