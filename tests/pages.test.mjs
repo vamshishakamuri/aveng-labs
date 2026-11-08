@@ -84,3 +84,42 @@ test('apps/super-dog.html: more-from row and buy buttons', () => {
   assert.match(html, /class="more"/);
   assert.ok((html.match(/class="[^"]*\bbuy\b/g) || []).length >= 3);
 });
+
+// ---- Final review fixes ----
+for (const page of PAGES) {
+  const html = fs.existsSync(path.join(root, page)) ? readPage(page) : '';
+
+  test(`${page}: menu button comes before the menu so focus reaches the links`, () => {
+    assert.ok(html.indexOf('class="menu-btn"') < html.indexOf('id="site-menu"'));
+  });
+
+  test(`${page}: forms post and ship disabled until site.js enables them`, () => {
+    for (const m of html.matchAll(/<form data-form[^>]*>[\s\S]*?<\/form>/g)) {
+      const form = m[0];
+      assert.match(form, /^<form data-form="[^"]+" method="post"/);
+      const controls = form.match(/<(input|select|button)\b[^>]*>/g);
+      assert.ok(controls.every((c) => /\sdisabled\b/.test(c)), controls.filter((c) => !/\sdisabled\b/.test(c)).join('\n'));
+      assert.match(form, /<button[^>]*data-live-label="[^"]+"/);
+    }
+  });
+}
+
+test('apps/front-desk.html: copy stays within the allowed claims', () => {
+  const html = readPage('apps/front-desk.html');
+  assert.doesNotMatch(html, /before you pay anything/);
+  assert.doesNotMatch(html, /right away/);
+  assert.doesNotMatch(html, /every word/);
+});
+
+test('apps/super-dog.html: menu matches the spec (All products, Voice, Shop, Shows, Buy)', () => {
+  const html = readPage('apps/super-dog.html');
+  const menu = html.slice(html.indexOf('id="site-menu"'), html.indexOf('</div>', html.indexOf('id="site-menu"')));
+  for (const want of ['href="../"', 'href="front-desk.html"', 'mellowmeadowbaby.com', 'youtube.com', 'class="btn btn-dark btn-sm buy"']) {
+    assert.ok(menu.includes(want), `menu missing ${want}`);
+  }
+});
+
+test('styles.css: without JS, the phone header grows to fit the wrapped links', () => {
+  const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
+  assert.match(css, /html:not\(\.js\) \.nav \.wrap \{[^}]*height: auto/);
+});

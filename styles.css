@@ -314,3 +314,8 @@ button:disabled, input:disabled, select:disabled { cursor: not-allowed; opacity:
 .more a:hover { transform: translateY(-3px); }
 .more b { font-family: "Fredoka", sans-serif; font-size: 1.15rem; display: block; margin: 4px 0; }
 .more .k { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+
+/* No-JS phone header: let the wrapped links grow the bar instead of clipping */
+@media (max-width: 680px) {
+  html:not(.js) .nav .wrap { height: auto; min-height: 68px; flex-wrap: wrap; padding-block: 10px; row-gap: 8px; }
+}

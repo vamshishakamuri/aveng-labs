@@ -95,8 +95,10 @@ export function initForms(doc, settings) {
       if (button) button.textContent = state.buttonLabel;
       return;
     }
+    fields.forEach((f) => { f.disabled = false; });
+    const idle = button ? (button.dataset.liveLabel || button.textContent) : '';
+    if (button) button.textContent = idle;
     const submit = makeSubmitter(settings.FORM_ENDPOINT);
-    const idle = button ? button.textContent : '';
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = new FormData(form);
