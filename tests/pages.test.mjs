@@ -123,3 +123,11 @@ test('styles.css: without JS, the phone header grows to fit the wrapped links', 
   const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
   assert.match(css, /html:not\(\.js\) \.nav \.wrap \{[^}]*height: auto/);
 });
+
+test('apps/super-dog.html: describes license activation honestly', () => {
+  const html = readPage('apps/super-dog.html');
+  assert.doesNotMatch(html, /no internet needed/i);
+  assert.match(html, /License key for up to 3 computers/);
+  assert.match(html, /<summary>How do I activate Super Dog\?<\/summary>/);
+  assert.match(html, /once to activate/);
+});
