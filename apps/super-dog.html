@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Super Dog: a puppy that reminds you to drink water</title>
   <meta name="description" content="Super Dog is a desktop pet for Mac, Windows and Linux. $4.99, once. A fluffy puppy follows your cursor and reminds you to sip water every 30 minutes.">
-  <link rel="icon" href="../img/superdog-icon.png">
+  <meta property="og:title" content="Super Dog: a puppy that reminds you to drink water">
+  <meta property="og:description" content="A fluffy desktop pet for Mac, Windows and Linux. $4.99, once.">
+  <meta property="og:image" content="https://vamshishakamuri.github.io/aveng-labs/img/pets/superdog/front.png">
+  <link rel="icon" href="../img/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../img/brand/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../img/brand/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -15,13 +20,16 @@
 
 <nav class="nav">
   <div class="wrap">
-    <a class="brand" href="../"><span class="brand-dot">A</span>Aveng Labs</a>
-    <div class="nav-links">
+    <a class="brand" href="../"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M13.5 55 L32 14.5 L50.5 55" fill="none" stroke="#1f2a1d" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 41.5 H42" fill="none" stroke="#1f2a1d" stroke-width="7.5" stroke-linecap="round"/><path d="M32.5 13 C33 5 40.5 0.5 50 1.5 C49.5 10.5 42 15.5 32.5 13 Z" fill="#c8643b"/><path d="M34 12 C38 9 42 6.5 46 4.5" fill="none" stroke="#f4c2a8" stroke-width="1.4" stroke-linecap="round"/></svg>
+Aveng Labs</a>
+    <div class="nav-links" id="site-menu">
+      <a href="../">All products</a>
       <a href="#features">Features</a>
       <a href="#pets">Pets</a>
       <a href="#faq">FAQ</a>
       <a class="btn btn-dark btn-sm buy" href="#buy">Buy for $4.99</a>
     </div>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="site-menu">☰</button>
   </div>
 </nav>
 
@@ -143,6 +151,7 @@
         </ul>
         <a class="btn btn-dark buy" href="#buy" style="justify-content:center">Buy Super Dog for $4.99</a>
         <p class="small" style="text-align:center">Secure checkout by Lemon Squeezy. Version 0.2.0.</p>
+          <p class="buy-note" data-checkout-note hidden>Checkout opens soon</p>
       </div>
     </div>
 
@@ -172,32 +181,25 @@
   </div>
 </section>
 
+<section class="more-from" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head center"><span class="eyebrow">More from Aveng Labs</span><h2 style="font-size:2rem">Other little things we make.</h2></div>
+    <div class="more">
+      <a href="front-desk.html"><span class="k">AI voice agent</span><b>Front Desk</b><span class="muted small">Answers your business line when you can't.</span></a>
+      <a href="https://mellowmeadowbaby.com" target="_blank" rel="noopener"><span class="k">Online shop</span><b>Mellow Meadow Baby</b><span class="muted small">Soft, sweet things for little ones.</span></a>
+      <a href="https://www.youtube.com/@NowItsYouShow" target="_blank" rel="noopener"><span class="k">YouTube show</span><b>Now It's You</b><span class="muted small">Animated What IF stories told to you.</span></a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <span>© 2026 Aveng Labs</span>
-    <span><a href="../">All apps</a><a href="#buy">Buy</a><a href="https://github.com/Aveng3r80/super-dog">GitHub</a></span>
+    <span><a href="super-dog.html">Super Dog</a><a href="front-desk.html">Front Desk</a><a href="https://mellowmeadowbaby.com" target="_blank" rel="noopener">Mellow Meadow Baby</a><a href="https://www.youtube.com/@NowItsYouShow" target="_blank" rel="noopener">Now It's You</a><a href="#faq">Help</a></span>
   </div>
 </footer>
 
 <script>
-  const nav = document.querySelector('.nav');
-  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), { passive: true });
-
-  // Lemon Squeezy checkout. Paste the product's checkout link here; every .buy button uses it.
-  // While it's empty, Buy buttons just scroll to the Buy section.
-  const CHECKOUT_URL = '';
-  if (CHECKOUT_URL) {
-    document.querySelectorAll('a.buy').forEach(a => {
-      a.href = CHECKOUT_URL;
-      a.classList.add('lemonsqueezy-button'); // opens checkout as an overlay on this page
-    });
-    const s = document.createElement('script');
-    s.src = 'https://app.lemonsqueezy.com/js/lemon.js';
-    s.defer = true;
-    s.onload = () => window.createLemonSqueezy?.();
-    document.head.appendChild(s);
-  }
-
   // Cursor demo: the pet trails the pointer at a polite distance
   const demo = document.getElementById('demo'), pet = document.getElementById('demo-pet'), cur = document.getElementById('demo-cursor');
   let tx = 200, ty = 60, px = 40, py = 40, facing = 1;
@@ -221,5 +223,6 @@
     requestAnimationFrame(step);
   })();
 </script>
+<script type="module" src="../js/site.js"></script>
 </body>
 </html>
