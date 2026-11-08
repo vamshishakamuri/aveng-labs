@@ -60,3 +60,21 @@ test('submitForm reports failure when offline and does not throw', async () => {
   const result = await submitForm('https://formspree.io/f/x', new FormData(), async () => { throw new TypeError('Failed to fetch'); });
   assert.deepEqual(result, { ok: false, message: FAIL });
 });
+
+test('makeSubmitter ignores a second submit while the first is in flight', async () => {
+  const { makeSubmitter } = await import('../js/site.js');
+  let calls = 0;
+  let release;
+  const slow = () => { calls++; return new Promise((r) => { release = () => r({ ok: true, status: 200 }); }); };
+  const submit = makeSubmitter('https://formspree.io/f/x', slow);
+  const first = submit(new FormData());
+  const second = await submit(new FormData());
+  assert.equal(second, null);
+  release();
+  assert.deepEqual(await first, { ok: true, message: OK });
+  assert.equal(calls, 1);
+  const third = submit(new FormData());
+  release();
+  assert.deepEqual(await third, { ok: true, message: OK });
+  assert.equal(calls, 2);
+});
