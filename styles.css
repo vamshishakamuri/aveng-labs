@@ -232,7 +232,8 @@ button:disabled, input:disabled, select:disabled { cursor: not-allowed; opacity:
 .hero h1 { margin-top: 16px; }
 .hero h1 em, .fd-hero h1 em { font-style: normal; color: var(--accent); }
 #shelf { padding-top: 40px; }
-.shelf { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.shelf { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+@media (max-width: 1000px) { .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); } .shelf .tile:last-child:nth-child(odd) { grid-column: 1 / -1; } }
 @media (max-width: 760px) { .shelf { grid-template-columns: 1fr; } }
 .shelf .tile { padding: 0; display: flex; flex-direction: column; text-decoration: none; transition: transform .2s; }
 .shelf .tile:hover { transform: translateY(-4px); }
@@ -248,9 +249,6 @@ button:disabled, input:disabled, select:disabled { cursor: not-allowed; opacity:
 .c-dog .pic { background: var(--dog); } .c-dog .status { background: var(--ink); color: var(--bg); }
 .c-desk .pic { background: var(--t1); } .c-desk .status { background: #cfe6cc; color: #2c5a2a; }
 .c-shop .pic { background: var(--t3); } .c-shop .status { background: #f8e3a3; color: #6d5410; }
-.c-show .pic { background: #1d1a17; } .c-show .status { background: #fbd5c9; color: #8a3519; }
-.c-show .pic img.thumb { width: 100%; height: 100%; object-fit: cover; opacity: .95; }
-.c-show .play { position: absolute; inset: 0; margin: auto; width: 62px; height: 62px; border-radius: 50%; background: rgba(255, 255, 255, .95); color: var(--ink); display: grid; place-items: center; font-size: 1.3rem; padding-left: 4px; }
 .phone { font-size: 2.8rem; margin-right: 14px; }
 .c-desk .pic { grid-auto-flow: column; }
 .wave { display: flex; gap: 5px; align-items: center; height: 70px; }
@@ -308,7 +306,7 @@ button:disabled, input:disabled, select:disabled { cursor: not-allowed; opacity:
 
 /* ---------- Super Dog: more-from row ---------- */
 .buy-note { background: var(--warm); border-radius: 14px; padding: 10px 14px; font-size: .85rem; color: #7a3a1d; text-align: center; }
-.more { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.more { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 @media (max-width: 760px) { .more { grid-template-columns: 1fr; } }
 .more a { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px; text-decoration: none; display: block; transition: transform .2s; }
 .more a:hover { transform: translateY(-3px); }

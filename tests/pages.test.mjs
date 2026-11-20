@@ -47,10 +47,10 @@ for (const page of PAGES) {
     assert.doesNotMatch(html, /github\.com\/Aveng3r80/);
   });
 
-  test(`${page}: external shop and YouTube links open safely`, () => {
+  test(`${page}: external shop links open safely`, () => {
     const bad = [...html.matchAll(/<a\b[^>]*>/g)]
       .map((m) => m[0])
-      .filter((tag) => /href="[^"]*(mellowmeadowbaby\.com|youtube\.com)/.test(tag))
+      .filter((tag) => /href="[^"]*(mellowmeadowbaby\.com)/.test(tag))
       .filter((tag) => !/target="_blank"/.test(tag) || !/rel="noopener"/.test(tag));
     assert.deepEqual(bad, []);
   });
@@ -68,7 +68,7 @@ for (const page of PAGES) {
 test('index.html: studio shelf structure', () => {
   const html = readPage('index.html');
   assert.match(html, /id="shelf"/);
-  assert.equal((html.match(/<a class="tile /g) || []).length, 4);
+  assert.equal((html.match(/<a class="tile /g) || []).length, 3);
   assert.doesNotMatch(html, /id="channels"/);
 });
 
@@ -111,10 +111,10 @@ test('apps/front-desk.html: copy stays within the allowed claims', () => {
   assert.doesNotMatch(html, /every word/);
 });
 
-test('apps/super-dog.html: menu matches the spec (All products, Voice, Shop, Shows, Buy)', () => {
+test('apps/super-dog.html: menu matches the spec (All products, Voice, Shop, Buy)', () => {
   const html = readPage('apps/super-dog.html');
   const menu = html.slice(html.indexOf('id="site-menu"'), html.indexOf('</div>', html.indexOf('id="site-menu"')));
-  for (const want of ['href="../"', 'href="front-desk.html"', 'mellowmeadowbaby.com', 'youtube.com', 'class="btn btn-dark btn-sm buy"']) {
+  for (const want of ['href="../"', 'href="front-desk.html"', 'mellowmeadowbaby.com', 'class="btn btn-dark btn-sm buy"']) {
     assert.ok(menu.includes(want), `menu missing ${want}`);
   }
 });
