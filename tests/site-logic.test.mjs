@@ -5,8 +5,9 @@ import { SETTINGS, buyState, formState, submitForm, demoState } from '../js/site
 const OK = "Thanks, we'll be in touch.";
 const FAIL = 'Something went wrong. Try again in a minute.';
 
-test('settings ship empty', () => {
-  assert.deepEqual(SETTINGS, { CHECKOUT_URL: '', FORM_ENDPOINT: '', DEMO_AUDIO_URL: '' });
+test('settings: forms go to Formspree; checkout and demo audio still ship empty', () => {
+  assert.deepEqual(SETTINGS, { CHECKOUT_URL: '', FORM_ENDPOINT: 'https://formspree.io/f/xbgozlnd', DEMO_AUDIO_URL: '' });
+  assert.match(SETTINGS.FORM_ENDPOINT, /^https:\/\/formspree\.io\/f\/[a-z0-9]+$/i);
 });
 
 test('buyState without a checkout link scrolls to the Buy section', () => {

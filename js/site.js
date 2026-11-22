@@ -2,7 +2,7 @@
 // every page behaves honestly while a setting is empty.
 export const SETTINGS = {
   CHECKOUT_URL: '',   // Lemon Squeezy product share link for Super Dog
-  FORM_ENDPOINT: '',  // Formspree (or similar) form URL for sign-ups and demo requests
+  FORM_ENDPOINT: 'https://formspree.io/f/xbgozlnd', // Formspree: sign-ups and demo requests, one form (each post carries its source)
   DEMO_AUDIO_URL: '', // Front Desk sample call, e.g. '../audio/front-desk-demo.mp3'
 };
 
