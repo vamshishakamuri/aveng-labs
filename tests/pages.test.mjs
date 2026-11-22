@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const PAGES = ['index.html', 'apps/super-dog.html', 'apps/front-desk.html'];
+const PAGES = ['index.html', 'apps/super-dog.html', 'apps/front-desk.html', 'apps/insurance-check.html'];
 
 export function readPage(rel) {
   return fs.readFileSync(path.join(root, rel), 'utf8');
@@ -68,7 +68,8 @@ for (const page of PAGES) {
 test('index.html: studio shelf structure', () => {
   const html = readPage('index.html');
   assert.match(html, /id="shelf"/);
-  assert.equal((html.match(/<a class="tile /g) || []).length, 3);
+  assert.equal((html.match(/<a class="tile /g) || []).length, 4);
+  assert.match(html, /href="apps\/insurance-check\.html"/);
   assert.doesNotMatch(html, /id="channels"/);
 });
 
@@ -77,6 +78,28 @@ test('apps/front-desk.html: booking, demo and form hooks', () => {
   assert.match(html, /id="book"/);
   assert.match(html, /id="demo"/);
   assert.match(html, /data-form="front-desk"/);
+});
+
+test('apps/insurance-check.html: booking, sample note and form hooks', () => {
+  const html = readPage('apps/insurance-check.html');
+  assert.match(html, /id="book"/);
+  assert.match(html, /id="note"/);
+  assert.match(html, /data-form="insurance-check"/);
+  assert.match(html, /fictional/);
+});
+
+test('apps/insurance-check.html: copy stays within the allowed claims', () => {
+  const html = readPage('apps/insurance-check.html');
+  // What an electronic check can't promise: no compliance badge, no guarantee, no network status.
+  assert.doesNotMatch(html, /HIPAA[- ]compliant/i);
+  assert.doesNotMatch(html, /guarantee(?!s? of payment)/i);
+  assert.match(html, /not a guarantee of payment/);
+  assert.match(html, /whether this office is in network/);
+  assert.doesNotMatch(html, /\$\d+\s*(?:\/|a |per )\s*mo/i);
+});
+
+test('every page footer links to Insurance Check', () => {
+  for (const page of PAGES) assert.match(readPage(page), /insurance-check\.html">Insurance Check<\/a>/, page);
 });
 
 test('apps/super-dog.html: more-from row and buy buttons', () => {

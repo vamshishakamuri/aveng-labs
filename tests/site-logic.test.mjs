@@ -25,6 +25,10 @@ test('formState without an endpoint disables the booking form', () => {
   assert.deepEqual(formState('', 'front-desk'), { enabled: false, buttonLabel: 'Booking opens soon' });
 });
 
+test('formState without an endpoint disables the insurance booking form', () => {
+  assert.deepEqual(formState('', 'insurance-check'), { enabled: false, buttonLabel: 'Booking opens soon' });
+});
+
 test('formState with an endpoint enables the form', () => {
   assert.deepEqual(formState('https://formspree.io/f/x', 'newsletter'), { enabled: true, buttonLabel: null });
 });

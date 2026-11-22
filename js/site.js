@@ -17,7 +17,7 @@ export function buyState(checkoutUrl) {
 
 export function formState(endpoint, kind) {
   if (endpoint) return { enabled: true, buttonLabel: null };
-  return { enabled: false, buttonLabel: kind === 'front-desk' ? 'Booking opens soon' : 'Sign-ups open soon' };
+  return { enabled: false, buttonLabel: ['front-desk', 'insurance-check'].includes(kind) ? 'Booking opens soon' : 'Sign-ups open soon' };
 }
 
 export async function submitForm(endpoint, data, fetchImpl = fetch) {
