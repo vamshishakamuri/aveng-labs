@@ -12,6 +12,7 @@
   --t2: #f6dccb;
   --t3: #f3e7b8;
   --dog: #dcecff;
+  --keep: #ecdde4;
   --water: #e3ecd6;
   --warm: #f6dccb;
   --mint: #dfeadb;
@@ -232,10 +233,11 @@ button:disabled, input:disabled, select:disabled { cursor: not-allowed; opacity:
 .hero p.lead { max-width: 620px; }
 .hero h1 { margin-top: 16px; }
 
-/* Four equal previews under the hero, one per product */
-.lineup { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 56px; text-align: left; }
-@media (max-width: 860px) { .lineup { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 420px) { .lineup { grid-template-columns: 1fr; } }
+/* Five equal previews under the hero, one per product: three then two, centred */
+.lineup { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 56px; text-align: left; }
+.lineup .chip { flex: 0 0 calc((100% - 28px) / 3); }
+@media (max-width: 860px) { .lineup .chip { flex-basis: calc((100% - 14px) / 2); } }
+@media (max-width: 420px) { .lineup .chip { flex-basis: 100%; } }
 .chip { display: flex; align-items: center; gap: 12px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 10px 14px 10px 10px; text-decoration: none; box-shadow: var(--shadow); transition: transform .2s; min-width: 0; }
 .chip:hover { transform: translateY(-3px); }
 .chip > span { min-width: 0; }
@@ -244,13 +246,13 @@ button:disabled, input:disabled, select:disabled { cursor: not-allowed; opacity:
 .chip .thumb img.pet { width: 82%; height: auto; object-fit: contain; }
 .chip .k { display: block; font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
 .chip b { display: block; font-family: "Fredoka", sans-serif; font-size: 1.08rem; line-height: 1.2; }
-.th-desk { background: var(--t1); } .th-check { background: var(--t2); } .th-dog { background: var(--dog); } .th-shop { background: var(--t3); }
+.th-desk { background: var(--t1); } .th-check { background: var(--t2); } .th-dog { background: var(--dog); } .th-shop { background: var(--t3); } .th-keep { background: var(--keep); }
 .mini-wave { display: flex; gap: 3px; align-items: center; height: 30px; }
 .mini-wave i { width: 4px; border-radius: 3px; background: var(--accent); }
 .mini-check { width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-weight: 700; }
 .hero h1 em, .fd-hero h1 em { font-style: normal; color: var(--accent); }
 #shelf { padding-top: 40px; }
-/* Two by two: four tiles, none left alone on a row. */
+/* Two by two; an odd last tile takes the full row. */
 .shelf { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .shelf .tile:last-child:nth-child(odd) { grid-column: 1 / -1; }
 @media (max-width: 760px) { .shelf { grid-template-columns: 1fr; } }
@@ -269,6 +271,17 @@ button:disabled, input:disabled, select:disabled { cursor: not-allowed; opacity:
 .c-desk .pic { background: var(--t1); } .c-desk .status { background: #cfe6cc; color: #2c5a2a; }
 .c-shop .pic { background: var(--t3); } .c-shop .status { background: #f8e3a3; color: #6d5410; }
 .c-check .pic { background: var(--t2); } .c-check .status { background: var(--t2); color: #7a3a1d; }
+.c-keep .pic { background: var(--keep); } .c-keep .status { background: var(--keep); color: #6b2f47; }
+.c-keep .scene .bub.caller { background: #dcc3cf; }
+.shelf .c-keep .pic.scene { height: auto; min-height: 220px; padding-bottom: 14px; }
+/* The full-row tile lays out side by side on wide screens: sample on the left, words on the right. */
+@media (min-width: 761px) {
+  .shelf .tile:last-child:nth-child(odd) { flex-direction: row; }
+  .shelf .tile:last-child:nth-child(odd) .pic { flex: 1 1 50%; height: auto; min-height: 240px; }
+  .shelf .tile:last-child:nth-child(odd) .pic.scene { padding-bottom: 14px; }
+  .shelf .tile:last-child:nth-child(odd) .body { flex: 1 1 50%; justify-content: center; }
+  .shelf .tile:last-child:nth-child(odd) .go { margin-top: 0; }
+}
 /* Tile scenes: a sample call for Front Desk, a sample note for Insurance Check */
 .shelf .tile .pic.scene { display: block; padding: 22px 26px 0; }
 .scene .bub { font-size: .84rem; margin: 0 0 8px; padding: 8px 12px; box-shadow: 0 1px 2px rgba(40, 50, 30, .06); }
@@ -342,6 +355,10 @@ button:disabled, input:disabled, select:disabled { cursor: not-allowed; opacity:
   .fd-faq details p{margin-top:8px;color:var(--ink-2)}
 [hidden] { display: none !important; }
 .call-top audio { width: 100%; }
+
+/* ---------- Memory Keeper page ---------- */
+.page-line { margin-top: 14px; padding: 14px 16px; border-radius: 14px; background: var(--keep); font-family: Georgia, "Times New Roman", serif; font-size: 1rem; line-height: 1.5; }
+.page-line .who { font-family: "Inter", system-ui, sans-serif; color: #6b2f47; }
 
 /* ---------- Super Dog: more-from row ---------- */
 .buy-note { background: var(--warm); border-radius: 14px; padding: 10px 14px; font-size: .85rem; color: #7a3a1d; text-align: center; }

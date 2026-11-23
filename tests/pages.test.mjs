@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const PAGES = ['index.html', 'apps/super-dog.html', 'apps/front-desk.html', 'apps/insurance-check.html'];
+const PAGES = ['index.html', 'apps/super-dog.html', 'apps/front-desk.html', 'apps/insurance-check.html', 'apps/memory-keeper.html'];
 
 export function readPage(rel) {
   return fs.readFileSync(path.join(root, rel), 'utf8');
@@ -68,8 +68,9 @@ for (const page of PAGES) {
 test('index.html: studio shelf structure', () => {
   const html = readPage('index.html');
   assert.match(html, /id="shelf"/);
-  assert.equal((html.match(/<a class="tile /g) || []).length, 4);
+  assert.equal((html.match(/<a class="tile /g) || []).length, 5);
   assert.match(html, /href="apps\/insurance-check\.html"/);
+  assert.match(html, /href="apps\/memory-keeper\.html"/);
   assert.doesNotMatch(html, /id="channels"/);
 });
 
@@ -96,6 +97,32 @@ test('apps/insurance-check.html: copy stays within the allowed claims', () => {
   assert.match(html, /not a guarantee of payment/);
   assert.match(html, /whether this office is in network/);
   assert.doesNotMatch(html, /\$\d+\s*(?:\/|a |per )\s*mo/i);
+});
+
+test('every page footer links to Memory Keeper', () => {
+  for (const page of PAGES) assert.match(readPage(page), /memory-keeper\.html">Memory Keeper<\/a>/, page);
+});
+
+test('apps/memory-keeper.html: waitlist, sample and form hooks', () => {
+  const html = readPage('apps/memory-keeper.html');
+  assert.match(html, /id="waitlist"/);
+  assert.match(html, /id="sample"/);
+  assert.match(html, /data-form="memory-keeper"/);
+  assert.match(html, /fictional/);
+});
+
+test('memory keeper copy stays within the allowed claims', () => {
+  // Not open yet: no price, no launch date, and phone calls are not described as ready.
+  for (const page of ['index.html', 'apps/memory-keeper.html']) {
+    const html = readPage(page);
+    const part = page === 'index.html' ? html.slice(html.indexOf('tile c-keep'), html.indexOf('</a>', html.indexOf('tile c-keep'))) : html;
+    assert.match(part, /Coming soon/, page);
+    assert.doesNotMatch(part, /\$\d/, page);
+    assert.doesNotMatch(part, /available now|buy now|order now|Mother's Day|Father's Day|Christmas/i, page);
+  }
+  const html = readPage('apps/memory-keeper.html');
+  assert.match(html, /The price isn't set yet/);
+  assert.match(html, /It isn't finished, and we won't say it's ready until it is/);
 });
 
 test('every page footer links to Insurance Check', () => {
