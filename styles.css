@@ -380,3 +380,12 @@ button:disabled, input:disabled, select:disabled { cursor: not-allowed; opacity:
 @media (max-width: 680px) {
   html:not(.js) .nav .wrap { height: auto; min-height: 68px; flex-wrap: wrap; padding-block: 10px; row-gap: 8px; }
 }
+
+/* ---------- Super Dog thank-you page ---------- */
+.thanks { padding-top: 56px; }
+.order { max-width: 640px; margin: 0 auto; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 28px; text-align: center; }
+.order > div, .order > .when-loading { display: none; }
+.order[data-order="loading"] .when-loading, .order[data-order="ready"] .when-ready, .order[data-order="error"] .when-error, .order[data-order="missing"] .when-missing { display: block; }
+html:not(.js) .order .when-loading { display: none; }
+.order .key { display: block; margin: 10px 0 4px; padding: 14px 12px; background: var(--bg); border: 1px dashed var(--line); border-radius: 14px; font: 600 1.02rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; user-select: all; }
+.order .small { margin-top: 12px; }

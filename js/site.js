@@ -1,7 +1,8 @@
 // Aveng Labs site behavior. Fill these in when the services are ready;
 // every page behaves honestly while a setting is empty.
 export const SETTINGS = {
-  CHECKOUT_URL: '',   // Lemon Squeezy product share link for Super Dog
+  CHECKOUT_URL: '',   // Stripe payment link for Super Dog (https://buy.stripe.com/...)
+  KEYS_API_URL: 'https://keys.avenglabs.com', // Super Dog key service
   FORM_ENDPOINT: 'https://formspree.io/f/xbgozlnd', // Formspree: sign-ups and demo requests, one form (each post carries its source)
   DEMO_AUDIO_URL: '', // Front Desk sample call, e.g. '../audio/front-desk-demo.mp3'
 };
@@ -75,12 +76,44 @@ export function initCheckout(doc, settings) {
     doc.querySelectorAll('[data-checkout-note]').forEach((n) => { n.hidden = false; });
     return;
   }
-  buttons.forEach((a) => { a.href = state.href; a.classList.add('lemonsqueezy-button'); });
-  const s = doc.createElement('script');
-  s.src = 'https://app.lemonsqueezy.com/js/lemon.js';
-  s.defer = true;
-  s.onload = () => doc.defaultView.createLemonSqueezy?.();
-  doc.head.appendChild(s);
+  // Stripe's payment page opens as an ordinary page; it sends the buyer back to the thank-you page.
+  buttons.forEach((a) => { a.href = state.href; });
+}
+
+// The thank-you page: Stripe adds ?session_id=... to its address after payment.
+export function orderUrl(apiUrl, search) {
+  const id = new URLSearchParams(search || '').get('session_id') || '';
+  if (!apiUrl || !/^cs_[A-Za-z0-9_]{10,200}$/.test(id)) return null;
+  return `${apiUrl.replace(/\/+$/, '')}/order?session_id=${id}`;
+}
+
+export async function fetchOrder(url, fetchImpl = fetch) {
+  try {
+    const res = await fetchImpl(url, { headers: { Accept: 'application/json' } });
+    if (!res.ok) return { ok: false };
+    const body = await res.json();
+    return body && body.key ? { ok: true, key: body.key, downloadUrl: body.download_url || null } : { ok: false };
+  } catch {
+    return { ok: false };
+  }
+}
+
+export async function initThanks(doc, settings, fetchImpl) {
+  const box = doc.querySelector('[data-order]');
+  if (!box) return;
+  const show = (state) => { box.dataset.order = state; };
+  const url = orderUrl(settings.KEYS_API_URL, doc.defaultView.location.search);
+  if (!url) { show('missing'); return; }
+  const order = await fetchOrder(url, fetchImpl);
+  if (!order.ok) { show('error'); return; }
+  box.querySelector('[data-key]').textContent = order.key;
+  const dl = box.querySelector('[data-download]');
+  if (dl && order.downloadUrl) dl.href = order.downloadUrl;
+  const copy = box.querySelector('[data-copy]');
+  if (copy) copy.addEventListener('click', async () => {
+    try { await doc.defaultView.navigator.clipboard.writeText(order.key); copy.textContent = 'Copied'; } catch { copy.textContent = 'Select the key and copy it'; }
+  });
+  show('ready');
 }
 
 export function initForms(doc, settings) {
@@ -133,6 +166,7 @@ if (typeof document !== 'undefined') {
   initCheckout(document, SETTINGS);
   initForms(document, SETTINGS);
   initDemo(document, SETTINGS);
+  initThanks(document, SETTINGS);
   const nav = document.querySelector('.nav');
   if (nav) addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), { passive: true });
 }

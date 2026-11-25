@@ -1,12 +1,12 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SETTINGS, buyState, formState, submitForm, demoState } from '../js/site.js';
+import { SETTINGS, buyState, formState, submitForm, demoState, orderUrl, fetchOrder } from '../js/site.js';
 
 const OK = "Thanks, we'll be in touch.";
 const FAIL = 'Something went wrong. Try again in a minute.';
 
 test('settings: forms go to Formspree; checkout and demo audio still ship empty', () => {
-  assert.deepEqual(SETTINGS, { CHECKOUT_URL: '', FORM_ENDPOINT: 'https://formspree.io/f/xbgozlnd', DEMO_AUDIO_URL: '' });
+  assert.deepEqual(SETTINGS, { CHECKOUT_URL: '', KEYS_API_URL: 'https://keys.avenglabs.com', FORM_ENDPOINT: 'https://formspree.io/f/xbgozlnd', DEMO_AUDIO_URL: '' });
   assert.match(SETTINGS.FORM_ENDPOINT, /^https:\/\/formspree\.io\/f\/[a-z0-9]+$/i);
 });
 
@@ -15,7 +15,23 @@ test('buyState without a checkout link scrolls to the Buy section', () => {
 });
 
 test('buyState with a checkout link goes live', () => {
-  assert.deepEqual(buyState('https://x.lemonsqueezy.com/buy/1'), { live: true, href: 'https://x.lemonsqueezy.com/buy/1', label: null });
+  assert.deepEqual(buyState('https://buy.stripe.com/abc'), { live: true, href: 'https://buy.stripe.com/abc', label: null });
+});
+
+test('orderUrl needs the key service address and a real-looking Stripe checkout id', () => {
+  assert.equal(orderUrl('https://keys.example/', '?session_id=cs_test_a1B2c3D4e5F6'), 'https://keys.example/order?session_id=cs_test_a1B2c3D4e5F6');
+  assert.equal(orderUrl('', '?session_id=cs_test_a1B2c3D4e5F6'), null);
+  assert.equal(orderUrl('https://keys.example', ''), null);
+  assert.equal(orderUrl('https://keys.example', '?session_id=../../etc'), null);
+  assert.equal(orderUrl('https://keys.example', '?session_id=cs_x%26admin%3D1'), null);
+});
+
+test('fetchOrder returns the key, and fails quietly on any problem', async () => {
+  const good = async () => ({ ok: true, json: async () => ({ key: 'SD-A-B', download_url: 'https://d' }) });
+  assert.deepEqual(await fetchOrder('https://keys.example/order', good), { ok: true, key: 'SD-A-B', downloadUrl: 'https://d' });
+  assert.deepEqual(await fetchOrder('u', async () => ({ ok: false, json: async () => ({}) })), { ok: false });
+  assert.deepEqual(await fetchOrder('u', async () => ({ ok: true, json: async () => ({}) })), { ok: false });
+  assert.deepEqual(await fetchOrder('u', async () => { throw new TypeError('offline'); }), { ok: false });
 });
 
 test('formState without an endpoint disables the newsletter form', () => {

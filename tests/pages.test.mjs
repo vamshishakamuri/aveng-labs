@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const PAGES = ['index.html', 'apps/super-dog.html', 'apps/front-desk.html', 'apps/insurance-check.html', 'apps/memory-keeper.html'];
+const PAGES = ['index.html', 'apps/super-dog.html', 'apps/front-desk.html', 'apps/insurance-check.html', 'apps/memory-keeper.html', 'apps/super-dog-thanks.html'];
 
 export function readPage(rel) {
   return fs.readFileSync(path.join(root, rel), 'utf8');
@@ -194,4 +194,18 @@ test('apps/super-dog.html: describes license activation honestly', () => {
   assert.doesNotMatch(html, /3 computers/);
   assert.match(html, /<summary>How do I activate Super Dog\?<\/summary>/);
   assert.match(html, /once to activate/);
+});
+
+test('super dog: no page mentions Lemon Squeezy, which has closed', () => {
+  for (const page of PAGES) assert.doesNotMatch(readPage(page), /lemon ?squeezy/i, page);
+  assert.doesNotMatch(fs.readFileSync(path.join(root, 'js/site.js'), 'utf8'), /lemonsqueezy\.com/);
+});
+
+test('apps/super-dog-thanks.html: shows the key only through site.js, with a fallback for every outcome', () => {
+  const html = readPage('apps/super-dog-thanks.html');
+  assert.match(html, /<meta name="robots" content="noindex">/);
+  assert.match(html, /data-order="loading"/);
+  for (const part of ['when-ready', 'when-error', 'when-missing', 'data-key', 'data-copy', 'data-download', '<noscript>']) assert.ok(html.includes(part), part);
+  assert.doesNotMatch(html, /class="[^"]*\bbuy\b/);
+  assert.doesNotMatch(html, /SD-[A-Za-z0-9]/);
 });
