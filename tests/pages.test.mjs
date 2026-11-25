@@ -215,3 +215,14 @@ test('super dog: no page promises a key email until an email service is connecte
     assert.doesNotMatch(readPage(page), /emailed|by email|email we sent|receipt email/i, page);
   }
 });
+
+test('apps/super-dog.html: six installer links, all for the version shown on the page', () => {
+  const html = readPage('apps/super-dog.html');
+  const version = html.match(/Secure checkout by Stripe\. Version (\d+\.\d+\.\d+)\./)[1];
+  const links = [...html.matchAll(/<a class="file" href="([^"]+)"/g)].map((m) => m[1]);
+  assert.equal(links.length, 6);
+  const base = `https://github.com/vamshishakamuri/aveng-labs/releases/download/superdog-v${version}/Super-Dog-${version}-`;
+  assert.deepEqual(links.map((l) => l.replace(base, '')).sort(), ['linux-amd64.deb', 'linux-x86_64.AppImage', 'mac-arm64.dmg', 'mac-x64.dmg', 'win-arm64.exe', 'win-x64.exe']);
+  assert.match(html, /id="install"/);
+  assert.match(readPage('apps/super-dog-thanks.html'), /data-download href="super-dog\.html#install"/);
+});
