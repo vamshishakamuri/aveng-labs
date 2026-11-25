@@ -209,3 +209,9 @@ test('apps/super-dog-thanks.html: shows the key only through site.js, with a fal
   assert.doesNotMatch(html, /class="[^"]*\bbuy\b/);
   assert.doesNotMatch(html, /SD-[A-Za-z0-9]/);
 });
+
+test('super dog: no page promises a key email until an email service is connected', () => {
+  for (const page of ['apps/super-dog.html', 'apps/super-dog-thanks.html']) {
+    assert.doesNotMatch(readPage(page), /emailed|by email|email we sent|receipt email/i, page);
+  }
+});
