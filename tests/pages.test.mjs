@@ -112,7 +112,7 @@ test('apps/memory-keeper.html: waitlist, sample and form hooks', () => {
 });
 
 test('memory keeper copy stays within the allowed claims', () => {
-  // Not open yet: no price, no launch date, and phone calls are not described as ready.
+  // Not open yet: no price, no launch date, nothing a visitor could take as "buy it today".
   for (const page of ['index.html', 'apps/memory-keeper.html']) {
     const html = readPage(page);
     const part = page === 'index.html' ? html.slice(html.indexOf('tile c-keep'), html.indexOf('</a>', html.indexOf('tile c-keep'))) : html;
@@ -121,8 +121,21 @@ test('memory keeper copy stays within the allowed claims', () => {
     assert.doesNotMatch(part, /available now|buy now|order now|Mother's Day|Father's Day|Christmas/i, page);
   }
   const html = readPage('apps/memory-keeper.html');
-  assert.match(html, /The price isn't set yet/);
-  assert.match(html, /It isn't finished, and we won't say it's ready until it is/);
+  const text = html.slice(html.indexOf('<header'), html.indexOf('<footer>'));
+  assert.match(text, /The price isn't set yet/);
+  assert.match(text, /isn't open to the public/);
+  // The opening story is an illustration, never a testimonial, and uses no real family's names.
+  assert.match(text, /Kiran and Ammamma are fictional/);
+  assert.doesNotMatch(text, /\b(Arvind|Vamshi|Rose)\b/);
+  // Unverified security claims, and things that are not built or not proven.
+  assert.doesNotMatch(text, /secure|encrypt|HIPAA|private by design/i);
+  assert.doesNotMatch(text, /play ?back|hear them|gift|shipped|schedul|Tamil|Kannada|Malayalam|StoryWorth|Remento/i);
+  assert.match(text, /Hindi coming next/);
+  // The two other companies are named, with no retention figures quoted for them.
+  assert.match(text, /Twilio carries the phone call/);
+  assert.match(text, /Anthropic, the maker of Claude/);
+  assert.match(text, /cannot reach into their systems/);
+  assert.doesNotMatch(text, /\d+\s*(days?|hours?|months?)/i);
 });
 
 test('every page footer links to Insurance Check', () => {
