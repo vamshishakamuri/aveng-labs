@@ -1,7 +1,7 @@
 // Aveng Labs site behavior. Fill these in when the services are ready;
 // every page behaves honestly while a setting is empty.
 export const SETTINGS = {
-  CHECKOUT_URL: '',   // Stripe payment link for Super Dog (https://buy.stripe.com/...)
+  CHECKOUT_URL: 'https://buy.stripe.com/4gM4gyfP44b7dpN80S93y01', // Stripe payment link for Super Dog (live, Managed Payments on)
   KEYS_API_URL: 'https://keys.avenglabs.com', // Super Dog key service
   FORM_ENDPOINT: 'https://formspree.io/f/xbgozlnd', // Formspree: sign-ups and demo requests, one form (each post carries its source)
   DEMO_AUDIO_URL: '', // Front Desk sample call, e.g. '../audio/front-desk-demo.mp3'

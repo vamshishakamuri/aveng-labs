@@ -5,8 +5,8 @@ import { SETTINGS, buyState, formState, submitForm, demoState, orderUrl, fetchOr
 const OK = "Thanks, we'll be in touch.";
 const FAIL = 'Something went wrong. Try again in a minute.';
 
-test('settings: forms go to Formspree; checkout and demo audio still ship empty', () => {
-  assert.deepEqual(SETTINGS, { CHECKOUT_URL: '', KEYS_API_URL: 'https://keys.avenglabs.com', FORM_ENDPOINT: 'https://formspree.io/f/xbgozlnd', DEMO_AUDIO_URL: '' });
+test('settings: forms go to Formspree, checkout is the live Stripe link, demo audio still ships empty', () => {
+  assert.deepEqual(SETTINGS, { CHECKOUT_URL: 'https://buy.stripe.com/4gM4gyfP44b7dpN80S93y01', KEYS_API_URL: 'https://keys.avenglabs.com', FORM_ENDPOINT: 'https://formspree.io/f/xbgozlnd', DEMO_AUDIO_URL: '' });
   assert.match(SETTINGS.FORM_ENDPOINT, /^https:\/\/formspree\.io\/f\/[a-z0-9]+$/i);
 });
 
